@@ -1,4 +1,19 @@
-﻿namespace warehouse_02;
+﻿
+namespace MonkeyFinder;
+
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+        MainPage = new AppShell();
+    }
+}
+
+
+
+/* namespace warehouse_02;
 
 public partial class App : Application
 {
@@ -8,4 +23,4 @@ public partial class App : Application
 
 		MainPage = new AppShell();
 	}
-}
+} */
