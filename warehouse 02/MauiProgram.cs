@@ -1,6 +1,7 @@
 ﻿using MonkeyFinder.Services;
 using MonkeyFinder.View;
 using warehouse_02;
+//using warehouse_02.View;
 
 namespace MonkeyFinder;
 
@@ -16,6 +17,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
             });
         builder.Services.AddSingleton<MonkeyService>();
+        builder.Services.AddSingleton<CoffeeService>();
         builder.Services.AddSingleton<MonkeysViewModel>();
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddTransient<MonkeyDetailsViewModel>();
@@ -23,6 +25,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
         builder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
         builder.Services.AddSingleton<IMap>(Map.Default);
+        builder.Services.AddSingleton<StoredLocalViewModel>();
+        builder.Services.AddSingleton<StoredLocal>();
 
 
         return builder.Build();

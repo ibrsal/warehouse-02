@@ -11,7 +11,7 @@
     <Grid
         ColumnDefinitions="*,*"
         ColumnSpacing="5"
-        RowDefinitions="*,Auto"
+        RowDefinitions="*,Auto,Auto"
         RowSpacing="0">
         <CollectionView ItemsSource="{Binding Monkeys}"
                          SelectionMode="None"
@@ -53,6 +53,12 @@
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
                 Grid.Column="1"
+                Style="{StaticResource ButtonOutline}"
+                Margin="8"/>
+        <Button Text="Stored items" 
+                Command="{Binding GoToStoredLocalCommand}"
+                Grid.Row="2"
+                Grid.Column="0"
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
         <ActivityIndicator IsVisible="{Binding IsBusy}"

@@ -1,4 +1,5 @@
 ﻿using MonkeyFinder.Services;
+using MonkeyFinder.View;
 
 namespace MonkeyFinder.ViewModel;
 
@@ -88,11 +89,16 @@ public partial class MonkeysViewModel : BaseViewModel
             return;
 
         await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
-    {
-        {"Monkey", monkey }
-    });
+        {
+            {"Monkey", monkey }
+        });
     }
 
 
+    [RelayCommand]
+    async Task GoToStoredLocal()
+    {
+        await Shell.Current.GoToAsync(nameof(StoredLocal));
+    }
 
 }

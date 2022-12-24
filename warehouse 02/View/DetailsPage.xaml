@@ -42,6 +42,7 @@
                 WidthRequest="200" 
                 Margin="8"
                 Style="{StaticResource ButtonOutline}"/>
+           
 
             <Label Style="{StaticResource MediumLabel}" Text="{Binding Monkey.Details}" />
             <!-- Details of Monkey -->
@@ -49,7 +50,14 @@
                 <Label Style="{StaticResource MediumLabel}" Text="{Binding Monkey.Details}" />
                 <Label Style="{StaticResource MicroLabel}" Text="{Binding Monkey.Location, StringFormat='Location: {0}'}" />
                 <Label Style="{StaticResource MicroLabel}" Text="{Binding Monkey.Population, StringFormat='Population: {0}'}" />
+                <Button Text="save" 
+                Command="{Binding SaveMonkeyCommand}"
+                HorizontalOptions="Center" 
+                WidthRequest="200" 
+                Margin="8"
+                Style="{StaticResource ButtonOutline}"/>
             </VerticalStackLayout>
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
