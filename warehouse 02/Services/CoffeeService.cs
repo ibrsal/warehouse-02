@@ -40,6 +40,7 @@ namespace MonkeyFinder.Services
             };
 
             var id = await db.InsertAsync(coffee);
+            await Shell.Current.DisplayAlert("Add Item", $"ID Item added to sqlite table: {id} ", "OK");
         }
 
         public async Task RemoveCoffee(int id)

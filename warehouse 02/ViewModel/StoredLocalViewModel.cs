@@ -1,25 +1,26 @@
 using Microsoft.Maui.Networking;
 using MonkeyFinder.Model;
 using MonkeyFinder.Services;
+using MonkeyFinder.Shared.Models;
 
 namespace MonkeyFinder.ViewModel;
 
 public partial class StoredLocalViewModel : BaseViewModel
 {
-    MonkeyService monkeyService;
-    public ObservableCollection<Monkey> Monkeys { get; } = new();
+    CoffeeService coffeeService;
+    public ObservableCollection<Coffee> Coffees { get; } = new();
 
     // public Command GetMonkeysCommand { get; set; }
     IConnectivity connectivity;
-    public StoredLocalViewModel(MonkeyService monkeyService, IConnectivity connectivity, IGeolocation geolocation)
+    public StoredLocalViewModel(CoffeeService coffeeService, IConnectivity connectivity)
     {
 
-        Title = "Monkey Finder";
-        this.monkeyService = monkeyService;
+        Title = "Local Coffee";
+        this.coffeeService = coffeeService;
         this.connectivity = connectivity;
     }
-
-    async Task GetMonkeysAsync()
+    [RelayCommand]
+    async Task GetCoffeesAsync()
     {
         if (connectivity.NetworkAccess != NetworkAccess.Internet)
         {
@@ -32,16 +33,16 @@ public partial class StoredLocalViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            var monkeys = await monkeyService.GetMonkeys();
-            if (Monkeys.Count != 0)
-                Monkeys.Clear();
-            foreach (var monkey in monkeys)
-                Monkeys.Add(monkey);
+            var coffees = await coffeeService.GetCoffee();
+            if (Coffees.Count != 0)
+                Coffees.Clear();
+            foreach (var coffee in coffees)
+                Coffees.Add(coffee);
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("Error!", $"Unable to get monkeys:{ex.Message}", "OK");
+            await Shell.Current.DisplayAlert("Error!", $"Unable to get coffees:{ex.Message}", "OK");
         }
         finally
         {

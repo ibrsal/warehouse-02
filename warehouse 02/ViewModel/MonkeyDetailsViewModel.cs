@@ -49,6 +49,9 @@ public partial class MonkeyDetailsViewModel : BaseViewModel
         try
         {
             await anInstanceofCoffeeService.AddCoffee(name, rosatr);
+            //await Shell.Current.DisplayAlert("Add Item","ItemDelegateList added to sqlite table", "OK");
+
+
         }
         catch (Exception ex)
         {
