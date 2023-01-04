@@ -34,10 +34,17 @@ public partial class StoredLocalViewModel : BaseViewModel
         {
             IsBusy = true;
             var coffees = await coffeeService.GetCoffee();
+                        
             if (Coffees.Count != 0)
                 Coffees.Clear();
             foreach (var coffee in coffees)
+            {
+                //Debug.WriteLine(coffee.Id);
+                //Debug.WriteLine(coffee.Name);
+                //Debug.WriteLine(coffee.Roaster);
+
                 Coffees.Add(coffee);
+            }
         }
         catch (Exception ex)
         {
